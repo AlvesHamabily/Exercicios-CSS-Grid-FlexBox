@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="https://github.com/AlvesHamabily/">
+    <title>Conhecendo o Flexbox - CSS </title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <header>
+        <h1 class="titulo"> FlexBox</h1>
+    </header>
+    <section class="container">
+        <h2>O que é o FlexBox?</h2>
+        <p>
+            Assim como diversas propriedades da estilizaçao em cascata (CSS), o <i>FlexBox</i> é um módulo que contém propriedades, algumas sendo declaradas como elementos-pai "<code>flex-container</code>" e os elementos-filhos "<code>flex-itens</code>"</p>
+        <p>
+            O flex-container, como o próprio nome sugere, se trata dos limites da caixa criada, como por exemplo a forma de "fora". Dessa maneira, os itens que serão inseridos como conteúdo podemm ser organizados de sua preferência. Veja os exemplos a seguir.
+           </p>
+    </section>
+
+    <section class="container"><br>
+        
+        <h3>Exemplo de FlexBox</h3>
+        <div class="nav-flex">
+            <a href="#" data-direction="column">Coluna</a>
+            <a href="#" data-direction="column-reverse">Coluna Reversa</a>
+            <a href="#" data-direction="row">Linha</a>
+            <a href="#" data-direction="row-reverse">Linha Reversa</a>
+        </div>
+        <div>
+        <div class="flex-container">
+            <div class="grid-item">😎</div>
+            <div class="grid-item">😁</div>
+            <div class="grid-item">😊</div>
+            <div class="grid-item">✌️</div>
+        </div>
+    </div>
+    </section>
+
+    <section class="container">
+        <h2>O que é o Grid</h2>
+        <p>
+            É um sistema de estruturação de layout que permite organizar conteúdo em linhas e colunas, formando uma grade, trazendo também maior organização e responsividade para o projeto em questão. Ele também funciona com a propriedade container, e para comerçarmos a urilizalo, devemos definí-lo como senod do tipo grid.<br><<code>.container{
+                display: grid;
+            }</code>><br> </p>
+        <p>
+            Por padrão ele criará uma grid do tipo block, ocupando uma linha inteira, porém pode-se usar o "<code>display: inline-grid;</code>" para utilizar containers.
+           </p>
+           <p>Como se trata de grades, é necesário informar o número de linhas e colunas desejadas. Para isso utlizamos <code>grid-template-rows</code> e para linhas usamos o <code>grid-template-colums</code> respectivamente.</p>
+           <p>No exemplo a seguir, os item foram dispostos </p>
+    </section>
+    <section class="container"><br>
+        <div class="grid-example">
+        <h3>Exemplo de Grid</h3>
+        <div class="nav-grid">
+            <a href="#" data-display="grid">Grid</a>
+            <a href="#" data-display="inline-grid">Inline Grid</a>
+            <a href="#" data-columns="repeat(3, 3fr)">3 Colunas (3fr)</a>
+            <a href="#" data-columns="50px 2fr 3fr">Colunas Variadas</a>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-item">🎶</div>
+            <div class="grid-item">🎶</div>
+            <div class="grid-item">🎶</div>
+            <div class="grid-item">🎶</div>
+            <div class="grid-item">🎶</div>
+            <div class="grid-item">🎶</div>
+        </div>
+    </div>
+    </section>
+
+    <footer>
+        <a href="/index.html"><strong>Início</strong> <br></a>
+        <p>&copy; 2024 Faculdade UNINASSAU. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-flex a');
+            const flexContainer = document.querySelector('.flex-container');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita que o link recarregue a página
+                    const direction = this.getAttribute('data-direction');
+                    flexContainer.style.flexDirection = direction;
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-grid a');
+            const gridContainer = document.querySelector('.grid-container');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault(); // Evita que o link recarregue a página
+                    const display = this.getAttribute('data-display');
+                    const columns = this.getAttribute('data-columns');
+
+                    if (display) {
+                        gridContainer.style.display = display;
+                    }
+
+                    if (columns) {
+                        gridContainer.style.gridTemplateColumns = columns;
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
